@@ -1,13 +1,13 @@
 {
-  "originHash" : "3f9051979b86d64e73d3b5ac527f73c2afe3e8722f1cd2ab46c8d596f1e6ad56",
+  "originHash" : "08c3bd9aa5405aff2b1e7bc8b6d8bb574bd2a9f93e4ad11ee949ccd2bba997ef",
   "pins" : [
     {
       "identity" : "trackerradarkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/duckduckgo/TrackerRadarKit.git",
       "state" : {
-        "revision" : "1403e17eeeb8493b92fb9d11eb8c846bb9776581",
-        "version" : "2.1.2"
+        "revision" : "a3f0ade39904602aa45874a7d71db4fafa10f7d9",
+        "version" : "3.0.1"
       }
     }
   ],

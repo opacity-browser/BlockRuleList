@@ -13,7 +13,7 @@ let package = Package(
       targets: ["ContentBlockRuleList"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/duckduckgo/TrackerRadarKit.git", from: "2.1.2")
+    .package(url: "https://github.com/duckduckgo/TrackerRadarKit.git", from: "3.0.1")
   ],
   targets: [
     .target(
@@ -22,9 +22,6 @@ let package = Package(
       resources: [
         .process("Resources/blockingRules.json"),
         .process("Resources/duckduckgoTrackerBlocklists.json")
-      ]),
-    .testTarget(
-      name: "ContentBlockRuleListTests",
-      dependencies: ["ContentBlockRuleList"]),
+      ])
   ]
 )

@@ -106,5 +106,157 @@
   {
     "trigger": { "url-filter": ".*reqde.sooplive.co.kr" },
     "action": { "type": "block" }
-  }
+  },
+  {
+      "trigger": { "url-filter": ".*pubads.g.doubleclick.net" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*amazon-adsystem.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*spade.twitch.tv" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*video-weaver.*.hls.ttvnw.net.*pre-roll" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*video-weaver.*.hls.ttvnw.net.*mid-roll" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*doubleclick.net" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*googleadservices.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*googlesyndication.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*youtube.com/api/stats/ads" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*youtube.com/pagead" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*youtube.com/ptracking" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*facebook.com/tr" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*facebook.com/common/cavalry_endpoint.php" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*instagram.com/logging" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*instagram.com/ajax/bz" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*mon.byteoversea.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*log.byteoversea.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*ads.tiktok.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*kick.com/api/v1/ads" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*dmxleo.dailymotion.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*ad.dailymotion.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*ad.vk.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*adsint.vk.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*bigolive.tv/api/advertising" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*va.huya.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*stadig.ifeng.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*rtbapi.douyucdn.cn" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*staticlive.douyucdn.cn.*swf" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*cm.bilibili.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*data.bilibili.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*ads.nicovideo.jp" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*dcdn.cdn.nimg.jp.*banner" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*google-analytics.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*googletagmanager.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*scorecardresearch.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*quantserve.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*outbrain.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*taboola.com" },
+      "action": { "type": "block" }
+    }
 ]

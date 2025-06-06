@@ -5,6 +5,16 @@ import TrackerRadarKit
 public struct ContentBlockRuleList {
   
   let webView: WKWebView
+  private let blockingRulesVersion = "1"
+  private let trackerBlocklistVersion = "1"
+  
+  private var otherBlockRulesIdentifier: String {
+    return "OtherContentBlockRules_v\(blockingRulesVersion)"
+  }
+  
+  private var trackerBlockRulesIdentifier: String {
+    return "ContentBlockRules_v\(trackerBlocklistVersion)"
+  }
   
   public init(webView: WKWebView) {
     self.webView = webView
@@ -12,6 +22,7 @@ public struct ContentBlockRuleList {
   
   public func updateRules(isBlocking: Bool) {
     if isBlocking {
+      removeOldVersions()
       addContentBlockingRules()
       addOtherBlockingRules()
     } else {
@@ -19,37 +30,57 @@ public struct ContentBlockRuleList {
     }
   }
   
-//  private func addOtherContentBlockingRules() {
-//    WKContentRuleListStore.default().lookUpContentRuleList(forIdentifier: "OtherContentBlockRules") { result, error in
-//      if let result = result {
-//        self.webView.configuration.userContentController.add(result)
-//        print("Add other tracker blocking - cache")
-//      } else {
-//        print("result = nil OtherContentBlockRules lookUpContentRuleList")
-//        self.addOtherBlockingRules()
-//      }
-//    }
-//  }
+  private func removeOldVersions() {
+    WKContentRuleListStore.default().getAvailableContentRuleListIdentifiers { identifiers in
+      identifiers?.forEach { identifier in
+        if identifier.hasPrefix("OtherContentBlockRules") && identifier != self.otherBlockRulesIdentifier {
+          WKContentRuleListStore.default().removeContentRuleList(forIdentifier: identifier) { _ in
+            print("Removed old rule: \(identifier)")
+          }
+        }
+        if identifier.hasPrefix("ContentBlockRules") && identifier != self.trackerBlockRulesIdentifier {
+          WKContentRuleListStore.default().removeContentRuleList(forIdentifier: identifier) { _ in
+            print("Removed old rule: \(identifier)")
+          }
+        }
+        
+        if identifier == "OtherContentBlockRules" {
+          WKContentRuleListStore.default().removeContentRuleList(forIdentifier: "OtherContentBlockRules") { _ in
+            print("Removed old rule: OtherContentBlockRules")
+          }
+        }
+        
+        if identifier == "ContentBlockRules" {
+          WKContentRuleListStore.default().removeContentRuleList(forIdentifier: "ContentBlockRules") { _ in
+            print("Removed old rule: ContentBlockRules")
+          }
+        }
+      }
+    }
+  }
   
   private func addOtherBlockingRules() {
     if let rulePath = Bundle.module.path(forResource: "blockingRules", ofType: "json"),
        let ruleString = try? String(contentsOfFile: rulePath) {
-      WKContentRuleListStore.default().compileContentRuleList(forIdentifier: "OtherContentBlockRules", encodedContentRuleList: ruleString) { result, error in
+      WKContentRuleListStore.default().compileContentRuleList(
+        forIdentifier: otherBlockRulesIdentifier,
+        encodedContentRuleList: ruleString
+      ) { result, error in
         if let result = result {
           self.webView.configuration.userContentController.add(result)
-          print("Add other tracker blocking")
+          print("Add other tracker blocking - identifier: \(self.otherBlockRulesIdentifier)")
         }
       }
     }
   }
   
   private func addContentBlockingRules() {
-    WKContentRuleListStore.default().lookUpContentRuleList(forIdentifier: "ContentBlockRules") { result, error in
+    WKContentRuleListStore.default().lookUpContentRuleList(forIdentifier: trackerBlockRulesIdentifier) { result, error in
       if let result = result {
         self.webView.configuration.userContentController.add(result)
-        print("Add tracker blocking - cache")
+        print("Add tracker blocking from cache - identifier: \(self.trackerBlockRulesIdentifier)")
       } else {
-        print("result = nil ContentBlockRules lookUpContentRuleList")
+        print("Cache miss for \(self.trackerBlockRulesIdentifier)")
         self.addBlockingRules()
       }
     }
@@ -65,10 +96,13 @@ public struct ContentBlockRuleList {
         let data = try JSONEncoder().encode(rules)
         let ruleList = String(data: data, encoding: .utf8)!
         
-        WKContentRuleListStore.default().compileContentRuleList(forIdentifier: "ContentBlockRules", encodedContentRuleList: ruleList) { result, error in
+        WKContentRuleListStore.default().compileContentRuleList(
+          forIdentifier: trackerBlockRulesIdentifier,
+          encodedContentRuleList: ruleList
+        ) { result, error in
           if let result = result {
             self.webView.configuration.userContentController.add(result)
-            print("Add tracker blocking")
+            print("Add tracker blocking - identifier: \(self.trackerBlockRulesIdentifier)")
           }
         }
       } catch {
