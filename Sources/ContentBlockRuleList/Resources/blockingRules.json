@@ -132,26 +132,6 @@
       "action": { "type": "block" }
     },
     {
-      "trigger": { "url-filter": ".*googleadservices.com" },
-      "action": { "type": "block" }
-    },
-    {
-      "trigger": { "url-filter": ".*googlesyndication.com" },
-      "action": { "type": "block" }
-    },
-    {
-      "trigger": { "url-filter": ".*youtube.com/api/stats/ads" },
-      "action": { "type": "block" }
-    },
-    {
-      "trigger": { "url-filter": ".*youtube.com/pagead" },
-      "action": { "type": "block" }
-    },
-    {
-      "trigger": { "url-filter": ".*youtube.com/ptracking" },
-      "action": { "type": "block" }
-    },
-    {
       "trigger": { "url-filter": ".*facebook.com/tr" },
       "action": { "type": "block" }
     },
@@ -258,5 +238,49 @@
     {
       "trigger": { "url-filter": ".*taboola.com" },
       "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*googleadservices.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*googlesyndication.com" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*youtube.com/api/stats/ads" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*youtube.com/pagead" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*youtube.com/ptracking" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*youtube\\.com/api/stats/ads.*" },
+      "action": { "type": "block" }
+    },
+    {
+      "trigger": { "url-filter": ".*youtube\\.com/pagead/.*" },
+      "action": { "type": "block" }
+    },
+    // 광고 요소(CSS)를 숨기는 규칙 추가
+    {
+      "trigger": { "url-filter": ".*youtube\\.com/.*" },
+      "action": {
+        "type": "css-display-none",
+        "selector": ".ad-container, .ad-interrupting, .ytp-ad-overlay-container, #player-ads, ytd-ad-slot-renderer, .pyv-afc-ads-container"
+      }
+    },
+    // 프리미엄 가입 유도 팝업 차단
+    {
+      "trigger": { "url-filter": ".*youtube\\.com/.*" },
+      "action": {
+        "type": "css-display-none",
+        "selector": "ytd-enforcement-message-view-model, yt-upsell-dialog-renderer"
+      }
     }
 ]
